@@ -16,7 +16,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="4.0.0" />
     <None Include="../README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
