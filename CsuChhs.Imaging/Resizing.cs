@@ -43,7 +43,10 @@ namespace CsuChhs.Imaging
 
                 canvas.DrawBitmap(
                     originalBitmap,
-                    new SKRect(0, 0, newWidth, newHeight));
+                    new SKRect(0, 0, newWidth, newHeight),
+                    new SKSamplingOptions(
+                        SKFilterMode.Linear,
+                        SKMipmapMode.Linear));
             }
 
             using var image = SKImage.FromBitmap(resizedBitmap);
