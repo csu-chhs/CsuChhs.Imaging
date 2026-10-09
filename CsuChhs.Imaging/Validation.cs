@@ -1,5 +1,5 @@
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
+
+using SkiaSharp;
 
 namespace CsuChhs.Imaging
 {
@@ -30,21 +30,28 @@ namespace CsuChhs.Imaging
         /// <param name="originalImage"></param>
         /// <param name="contentType"></param>
         /// <returns></returns>
-        public static bool IsValidThumbnailSize(int width, int height, 
-            byte[] originalImage, string contentType)
+        public static bool IsValidThumbnailSize(
+            int width,
+            int height,
+            byte[] originalImage,
+            string contentType)
         {
             if (!IsValidThumbnailContentType(contentType))
             {
                 return false;
             }
 
-            using (MemoryStream inStream = new MemoryStream(originalImage))
+            using var stream = new MemoryStream(originalImage);
+
+            using var codec = SKCodec.Create(stream);
+
+            if (codec == null)
             {
-                using (Image<Rgba32> image = Image.Load<Rgba32>(inStream))
-                {
-                    return image.Width == width && image.Height == height;
-                }
+                return false;
             }
+
+            return codec.Info.Width == width &&
+                   codec.Info.Height == height;
         }
     }
 }
