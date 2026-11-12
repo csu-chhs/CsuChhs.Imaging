@@ -17,6 +17,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="../README.md" Pack="true" PackagePath="\" />
-    <PackageReference Include="SkiaSharp" Version="4.154.0" />
+    <PackageReference Include="SkiaSharp" Version="4.156.0" />
   </ItemGroup>
 </Project>
